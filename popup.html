@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin: 0;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+      color: white;
+    }
+    .extract-btn {
+      width: 100%;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 15px;
+      transition: background 0.3s;
+    }
+    .extract-btn:hover {
+      background: #20b858;
+    }
+    .extract-btn:disabled {
+      background: #666;
+      cursor: not-allowed;
+    }
+    .results {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 15px;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+    .phone-item {
+      background: rgba(255,255,255,0.1);
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .copy-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .action-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .action-btn {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .action-btn:hover {
+      background: #5a6268;
+    }
+    .stats {
+      text-align: center;
+      font-size: 12px;
+      color: #ddd;
+      margin-bottom: 10px;
+    }
+    .warning {
+      background: rgba(255, 193, 7, 0.2);
+      border: 1px solid #ffc107;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+    .loading {
+      text-align: center;
+      padding: 20px;
+    }
+    .spinner {
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top: 3px solid #fff;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 10px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📱 WhatsApp Phone Extractor</h1>
+  </div>
+
+  <div class="warning">
+    ⚠️ Make sure you're on web.whatsapp.com before extracting
+  </div>
+
+  <button id="extractBtn" class="extract-btn">
+    🔍 Extract Phone Numbers
+  </button>
+
+  <div id="loading" class="loading" style="display: none;">
+    <div class="spinner"></div>
+    <p>Scanning for phone numbers...</p>
+  </div>
+
+  <div id="results" class="results" style="display: none;">
+    <div class="stats" id="stats"></div>
+    <div id="phoneList"></div>
+  </div>
+
+  <div id="actionButtons" class="action-buttons" style="display: none;">
+    <button id="copyAllBtn" class="action-btn">📋 Copy All</button>
+    <button id="exportBtn" class="action-btn">💾 Export CSV</button>
+    <button id="clearBtn" class="action-btn">🗑️ Clear</button>
+    <button id="refreshBtn" class="action-btn">🔄 Refresh</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

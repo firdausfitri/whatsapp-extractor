@@ -1,0 +1,11 @@
+
+/* Styles injected into WhatsApp Web */
+#whatsapp-extractor-indicator {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+  transition: opacity 0.3s ease !important;
+}
+
+#whatsapp-extractor-indicator:hover {
+  opacity: 0.8 !important;
+}
